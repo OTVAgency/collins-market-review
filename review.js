@@ -15,6 +15,12 @@ const reviewer = document.querySelector('#reviewer');
 const apiBase = document.documentElement.dataset.reviewApi || '';
 const suppliedReviewKey = new URLSearchParams(location.hash.slice(1)).get('review') || '';
 const reviewKey = /^[A-Za-z0-9_-]{43}$/.test(suppliedReviewKey) ? suppliedReviewKey : '';
+// A shared review key lives in the URL fragment. Browsers normally skip loading
+// the page again when only that fragment changes, so refresh to apply access.
+window.addEventListener('hashchange', () => location.reload());
+// Keep the approval link when someone clicks the logo to return to Posts.
+const brandLink = document.querySelector('.brand');
+if (brandLink && reviewKey) brandLink.href = location.href;
 function reviewHeaders(json = false) {
   const headers = json ? { 'Content-Type': 'application/json' } : {};
   if (reviewKey) headers['X-Review-Key'] = reviewKey;
