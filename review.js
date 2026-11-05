@@ -79,7 +79,8 @@ function makeCard(post) {
   card.querySelector('.row-link').href = post.sheetUrl;
   card.querySelector('.concept').hidden = post.type !== 'Reel';
   const approve = card.querySelector('.approve');
-  approve.textContent = post.type === 'Reel' ? 'Approve concept' : 'Approve post';
+  const canUndo = state === 'approved' && saved?.requestId;
+  approve.textContent = canUndo ? 'Undo approval' : post.type === 'Reel' ? 'Approve concept' : 'Approve post';
   approve.disabled = !storageReady || post.sheetStatus === 'Rejected';
   const form = card.querySelector('.change-form');
   form.elements.caption.value = post.caption;
@@ -89,14 +90,14 @@ function makeCard(post) {
     if (!form.hidden) form.elements.note.focus();
   });
   card.querySelector('.cancel').addEventListener('click', () => { form.hidden = true; });
-  approve.addEventListener('click', () => saveReview(post, card, 'approved', '', post.caption));
+  approve.addEventListener('click', () => saveReview(post, card, canUndo ? 'review' : 'approved', '', post.caption));
   form.addEventListener('submit', event => {
     event.preventDefault();
     saveReview(post, card, 'changes', form.elements.note.value.trim(), form.elements.caption.value.trim());
   });
   if (saved && saved.contentVersion === post.contentVersion) {
     const when = new Date(saved.createdAt).toLocaleString('en-US', {timeZone:'America/New_York', dateStyle:'medium', timeStyle:'short'});
-    setMessage(card, (saved.action === 'approved' ? 'Approval saved' : 'Change request saved') + ' · ' + saved.reviewer);
+    setMessage(card, (saved.action === 'approved' ? 'Approval saved' : saved.action === 'review' ? 'Approval undone — back to review' : 'Change request saved') + ' · ' + saved.reviewer);
     card.querySelector('.saved-detail').textContent = when + ' ET · ' + (saved.sheetSyncState === 'synced' ? 'Spreadsheet updated' : 'Spreadsheet update pending') + (saved.note ? '\n' + saved.note : '');
   } else if (post.sheetStatus === 'Rejected') {
     setMessage(card, 'This image needs a replacement before approval.', true);
@@ -131,14 +132,16 @@ async function saveReview(post, card, action, note, caption) {
   if (!caption) { setMessage(card, 'The caption cannot be empty.', true); return; }
   // The request ID makes an uncertain/retried submission identifiable server-side.
   const requestId = crypto.randomUUID();
+  const previousReviewId = action === 'review' ? reviews.get(post.id)?.requestId : undefined;
   const buttons = card.querySelectorAll('.actions button');
   buttons.forEach(button => { button.disabled = true; });
   setMessage(card, 'Saving…');
   try {
-    const response = await fetch(apiBase + '/api/reviews', {method:'POST', headers:reviewHeaders(true), body:JSON.stringify({requestId, postId:post.id, contentVersion:post.contentVersion, action, reviewer:name, note, caption})});
+    const response = await fetch(apiBase + '/api/reviews', {method:'POST', headers:reviewHeaders(true), body:JSON.stringify({requestId, postId:post.id, contentVersion:post.contentVersion, action, reviewer:name, note, caption, previousReviewId})});
     const value = await response.json();
     if (!response.ok || value.status !== 'success' || !value.review) throw new Error(value.message || 'The review was not saved.');
     reviews.set(post.id, value.review);
+    if (action === 'review') activeFilter = 'review';
     render();
   } catch (error) {
     setMessage(card, error.message || 'Could not confirm this save. Reload before trying again.', true);
