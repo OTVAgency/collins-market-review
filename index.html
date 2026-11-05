@@ -1,0 +1,51 @@
+<!doctype html><html lang="en" data-posts="./posts.json" data-review-api="https://collins-market-client-review.otvagency.chatgpt.site"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Collins Market — November content review</title><link rel="stylesheet" href="./review.css?v=20261105"><script src="./review.js?v=20261105" defer></script></head><body>
+  <header>
+    <a class="brand" href="./" aria-label="Collins Market content review"><img src="./logo.png" alt="Collins Market"></a>
+    <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101" target="_blank" rel="noopener">Open calendar ↗</a>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Prepared for evening review · November 5, 2026</p>
+      <h1>November posts</h1>
+      <p>See the image, read the caption, then approve it or tell us what to change.</p>
+    </section>
+    <nav class="format-tabs" aria-label="Content type">
+      <button type="button" data-format="Post" aria-pressed="true">Posts <span></span></button>
+      <button type="button" data-format="Story" aria-pressed="false">Stories <span></span></button>
+      <button type="button" data-format="Reel" aria-pressed="false">Reels <span></span></button>
+    </nav>
+    <section class="review-bar" aria-label="Review controls">
+      <label>Your name <input id="reviewer" name="reviewer" autocomplete="name" placeholder="Rich" maxlength="100"></label>
+      <div class="filters" role="group" aria-label="Filter posts">
+        <button type="button" data-filter="review" aria-pressed="true">To review <span id="review-count"></span></button>
+        <button type="button" data-filter="approved" aria-pressed="false">Approved <span id="approved-count"></span></button>
+        <button type="button" data-filter="changes" aria-pressed="false">Changes <span id="changes-count"></span></button>
+        <button type="button" data-filter="all" aria-pressed="false">All</button>
+      </div>
+    </section>
+    <p id="connection" class="connection" role="status">Loading posts…</p>
+    <section id="posts" class="posts" aria-label="Posts for review"></section>
+    <p id="empty" class="empty" hidden>No posts in this view.</p>
+  </main>
+  <footer>Review approval does not schedule or publish a post.</footer>
+  <dialog id="image-dialog"><button class="close" type="button" aria-label="Close full image">×</button><img alt=""><form method="dialog"><button class="secondary" type="submit">Close image</button></form></dialog>
+  <template id="post-template">
+    <article class="post">
+      <div class="post-top"><span class="date"></span><span class="badge"></span></div>
+      <button class="image-button" type="button"><img loading="lazy" alt=""></button>
+      <div class="post-body">
+        <p class="metadata"></p><h2></h2>
+        <p class="concept" hidden>Concept preview. The finished Reel needs a separate review.</p>
+        <p class="caption"></p><p class="note"></p>
+        <div class="actions"><button class="approve" type="button">Approve post</button><button class="request secondary" type="button">Request changes</button></div>
+        <form class="change-form" hidden>
+          <label>What would you like changed?<textarea name="note" maxlength="5000" placeholder="Image, wording, timing…"></textarea></label>
+          <label>Suggested caption<textarea name="caption" maxlength="10000"></textarea></label>
+          <div class="actions"><button class="send" type="submit">Save changes</button><button class="cancel secondary" type="button">Cancel</button></div>
+        </form>
+        <p class="review-message" role="status"></p>
+        <p class="saved-detail"></p><a class="row-link" target="_blank" rel="noopener">Open this calendar row ↗</a>
+      </div>
+    </article>
+  </template>
+</body></html>

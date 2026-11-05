@@ -1,2 +1,5 @@
-# collins-market-review
-Collins Market social content review — posts, stories, and reels.
+# Collins Market content review
+
+Public preview for the November 5, 2026 evening review. Posts, Stories and Reels are separate. The full review link supplied by Cory enables feedback without a sign-in; the plain Pages URL supports public viewing. Feedback is stored by a separate service and applied to the Google Sheet by Cory. No posting or scheduling happens here.
+
+This repository contains only the public viewer and selected review assets, not account credentials, private working notes, or backend database contents. Brand assets remain their owners’ property; third-party photo credits are supplied with the applicable item.
