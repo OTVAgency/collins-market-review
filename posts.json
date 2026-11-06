@@ -1,12 +1,12 @@
 {
   "month": "November 2026",
-  "sourceDate": "2026-11-05",
+  "sourceDate": "2026-11-06",
   "timezone": "America/New_York",
   "posts": [
     {
       "id": "CM-NOV26-06",
       "row": 6,
-      "date": "11/6/2026",
+      "date": "11/13/2026",
       "title": "The clocktower\u2019s story",
       "type": "Reel",
       "caption": "What downtown Staunton landmark always makes you stop and look?\n\nThe Clocktower Building dates to 1890. Tell us your favorite landmark\u2014or a memory that makes it special.\n\nA little local history from Collins Market for your next downtown stroll.",
@@ -14,17 +14,17 @@
       "sheetStatus": "Needs Review",
       "note": "11 a.m. ET proposed. Review concept; final Reel pending.",
       "approvalScope": "Downtown Fact Friday \u00b7 slide-style Reel. Review the fact and script first, then the finished Reel.",
-      "reviewVersion": "NOV26-BRANDING-R4",
+      "reviewVersion": "NOV13-CLOCKTOWER-REEL-R5",
       "mediaUrl": "https://drive.google.com/file/d/1g-7Ek60AD1rNgfc_GBTd3PT5WW4_d_pT/view?usp=drivesdk",
       "image": "./nov-6-branding-r4.png",
       "mediaSha256": "45869dcc9ccc3a88d659914c5da82561799ff3b3edb12ca6a78e122c91d3eb13",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A6:K6",
-      "contentVersion": "d9b9eea27e1f23b6020402b563f1fd9a4791dc778d19b4dfe8c6008f110f22cc"
+      "contentVersion": "df7a765ad157f35d8602ffcb452c012ebb374a4f3dae13433d03ea639e845898"
     },
     {
       "id": "CM-NOV26-07",
       "row": 7,
-      "date": "11/6/2026",
+      "date": "11/13/2026",
       "title": "Fact Friday \u00b7 Clocktower Story",
       "type": "Story",
       "caption": "The Clocktower Building dates to 1890. Which Staunton landmark is your favorite\u2014and what makes it special?\n\nA little local history from Collins Market.",
@@ -32,12 +32,12 @@
       "sheetStatus": "Needs Review",
       "note": "3 p.m. ET proposed. Matching Fact Friday Story; optional poll: Clocktower / Another landmark.",
       "approvalScope": "Fact Friday \u00b7 matching clocktower Story artwork, caption and optional native poll.",
-      "reviewVersion": "NOV06-CLOCKTOWER-STORY-R1",
+      "reviewVersion": "NOV13-CLOCKTOWER-STORY-R2",
       "mediaUrl": "https://drive.google.com/file/d/12VxvxeCYpeOCnb--4PMywropztYANsJZ/view?usp=drivesdk",
       "image": "./nov-7-clocktower-story-r1.png",
       "mediaSha256": "8677227def367ca86f9ab0cebf78967e378a2aaeef8b80921ac5f802e304403f",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A7:K7",
-      "contentVersion": "7283980a049bd55c0a485db502be471eeba22054a547baad4f8426ca31cc965a"
+      "contentVersion": "93bcd151512ef6e6e591c3154dfa6995b4d1e83526124e8099af9a8a4dd27d3b"
     },
     {
       "id": "CM-NOV26-08",
@@ -56,6 +56,45 @@
       "mediaSha256": "e1c870adb762206367e017a6f262a89c0fce80dd80b7eac183647bb957c3e25d",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A8:K8",
       "contentVersion": "8e1f0f662c6e2c98c9ec0e6fbe4dbbc95a8b65fd8da4a5396e0b36534c2c89c6"
+    },
+    {
+      "date": "11/7/2026",
+      "platform": "Facebook + Instagram",
+      "sheetStatus": "Needs Review",
+      "id": "CM-NOV26-PARADE-POST-01",
+      "row": 22,
+      "title": "Honoring our veterans \u00b7 Parade post",
+      "type": "Post",
+      "caption": "Let\u2019s hear it for our veterans. \ud83e\udd0e\n\nStaunton\u2019s Veterans Day Parade starts Saturday, November 7 at 11 a.m. and travels west along Beverley Street. Who will you be cheering for along the route?\n\n#CollinsMarket #DowntownStaunton #StauntonVA #VeteransDayParade",
+      "note": "Saturday parade post. Review square graphic and caption; choose a pre-parade posting time.",
+      "approvalScope": "Square feed graphic + caption for Saturday November 7; posting time still to choose.",
+      "reviewVersion": "NOV07-VETERANS-PARADE-SQUARE-R1",
+      "mediaUrl": "https://drive.google.com/file/d/19nTApuU3O4fCySjA4Lg4k5ri6r3i7OzC/view",
+      "image": "./nov-7-veterans-parade-square-r1.png",
+      "mediaSha256": "1be618c7dab9dc22dfae16854717ec09fb781995ae9cd7c3e1be82a05bbefa59",
+      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A22:K22",
+      "contentVersion": "5be2ff963bb5f432e43a6d6e59c987c96a18725f411dcb5fbbe90d25d9148880"
+    },
+    {
+      "date": "11/7/2026",
+      "platform": "Facebook + Instagram",
+      "sheetStatus": "Needs Review",
+      "id": "CM-NOV26-PARADE-STORY-01",
+      "row": 23,
+      "title": "Honoring our veterans \u00b7 Parade video Story",
+      "type": "Story",
+      "caption": "Honoring our veterans. Staunton\u2019s Veterans Day Parade begins Saturday, November 7 at 11 a.m. and travels west along Beverley Street. Who will you be cheering for?",
+      "note": "15-second photo slideshow with soft downtown jazz. Review the Story and choose a pre-parade posting time.",
+      "approvalScope": "Finished 15-second video Story, soft jazz and proposed caption for Saturday November 7; posting time still to choose.",
+      "reviewVersion": "NOV07-VETERANS-PARADE-JAZZ-R1",
+      "mediaUrl": "https://drive.google.com/file/d/1HIrjN_qouxG1T5g6mzKYELguz4RwN_Lw/view",
+      "image": "./nov-7-veterans-parade-story-r3.jpg",
+      "videoSrc": "./nov-7-veterans-parade-jazz-r1.mp4",
+      "mediaSha256": "fc693ef95eb0da719e4b9f3e7baf6178cd62ff11a4cd32df5d16197bb260b864",
+      "posterSha256": "54f472f023bc5b7b6af8743dadce64e78390226959a50df37beed7051aac7a55",
+      "durationSeconds": 15,
+      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A23:K23",
+      "contentVersion": "b9ba5c507b511f2d7a88562fc11ecc03bc0da5f320c472674701db4a7a37b6b3"
     },
     {
       "id": "CM-NOV26-09",
@@ -96,7 +135,7 @@
     {
       "id": "CM-NOV26-11",
       "row": 11,
-      "date": "11/13/2026",
+      "date": "11/20/2026",
       "title": "Shakespeare in Staunton",
       "type": "Reel",
       "caption": "Have you been inside Staunton\u2019s Blackfriars Playhouse?\n\nIt\u2019s the world\u2019s only recreation of Shakespeare\u2019s indoor Blackfriars theatre. If you\u2019ve been, what surprised you most? If you haven\u2019t, what would you want to see?\n\nA downtown conversation from Collins Market.",
@@ -104,12 +143,12 @@
       "sheetStatus": "Needs Review",
       "note": "11 a.m. ET proposed. Blackfriars photo; review concept, then final Reel.",
       "approvalScope": "Downtown Fact Friday \u00b7 slide-style Reel. Review the fact and script first, then the finished Reel.",
-      "reviewVersion": "NOV26-BRANDING-R4",
+      "reviewVersion": "NOV20-BLACKFRIARS-REEL-R5",
       "mediaUrl": "https://drive.google.com/file/d/1h1YVWks7LrUkbNMG2Wdh1mH4f_jAVEqf/view?usp=drivesdk",
       "image": "./nov-11-branding-r4.png",
       "mediaSha256": "c752b9e470bbb0afed24f41c25793a00b8b73603971f7e0d0d2e2506549965a0",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A11:K11",
-      "contentVersion": "39fa832373b4d849c55f045e5fa0bcf81d0a6e7cf41e0c40be8573fcea069297"
+      "contentVersion": "5d8377e54881524d73e7ca2ad5649bdc390e7af8bf6e6d4a05c369bb64f96b56"
     },
     {
       "id": "CM-NOV26-12",
@@ -149,21 +188,21 @@
     },
     {
       "id": "CM-NOV26-14",
-      "row": 14,
-      "date": "11/20/2026",
+      "row": 4,
+      "date": "12/4/2026",
       "title": "Since 1924",
       "type": "Reel",
       "caption": "If you could sit down with a Hotel 24 South guest from 1924, what would you ask?\n\nThe hotel opened in May 1924. We\u2019d love to hear what you\u2019re curious about: daily life, downtown shops, or what a visit cost back then.\n\nA little downtown history from Collins Market.",
       "platform": "Facebook + Instagram",
       "sheetStatus": "Needs Review",
-      "note": "11 a.m. ET proposed. Hotel photo use permission needed; final Reel pending.",
+      "note": "Dec 4 Fact Friday. Hotel photo permission and final Reel still needed.",
       "approvalScope": "Downtown Fact Friday \u00b7 slide-style Reel. Review the fact and script first, then the finished Reel.",
-      "reviewVersion": "NOV26-BRANDING-R4",
+      "reviewVersion": "DEC04-HOTEL24-REEL-R5",
       "mediaUrl": "https://drive.google.com/file/d/1eFqWX4Jt4PRINQtwXvKzzj360JA0M64a/view?usp=drivesdk",
       "image": "./nov-14-branding-r4.png",
       "mediaSha256": "f8875c73cb4cfc7d9f1af549370aee383a791571a1b5e21fedba2aaeff2eae39",
-      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A14:K14",
-      "contentVersion": "d193cb98c1acde384f907f54b5a3c62bc2d35409749a0e34cdca63e99d41234e"
+      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261201&range=A4:K4",
+      "contentVersion": "933ab76f09fb77c22406efad7a4c93902560557c5cfe67852ae65f0cea785fd2"
     },
     {
       "id": "CM-NOV26-15",
@@ -294,5 +333,5 @@
       "contentVersion": "127495eed651e3951b12c6cd330451902e8025df55a0569532abe3b6bd3e39b7"
     }
   ],
-  "reviewPreparedFor": "Evening review \u2014 November 5, 2026"
+  "reviewPreparedFor": "November 7 parade review \u2014 prepared November 6, 2026"
 }

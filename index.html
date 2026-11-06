@@ -1,19 +1,27 @@
-<!doctype html><html lang="en" data-posts="./posts.json?v=friday1" data-review-api="https://collins-market-client-review.otvagency.chatgpt.site"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Collins Market — November content review</title><link rel="stylesheet" href="./review.css?v=20261105"><script src="./review.js?v=20261105-undo1" defer></script></head><body>
+<!doctype html><html lang="en" data-posts="./posts.json?v=parade1" data-review-api="https://collins-market-client-review.otvagency.chatgpt.site"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Collins Market — November content review</title><link rel="stylesheet" href="./review.css?v=20261105"><script src="./review.js?v=20261106-parade1" defer></script></head><body>
   <header>
     <a class="brand" href="./" aria-label="Collins Market content review"><img src="./logo.png" alt="Collins Market"></a>
     <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101" target="_blank" rel="noopener">Open calendar ↗</a>
   </header>
   <main>
     <section class="intro">
-      <p class="eyebrow">Prepared for evening review · November 5, 2026</p>
+      <p class="eyebrow">Prepared November 6, 2026 · Saturday parade review</p>
       <h1>November posts</h1>
-      <p>See the image, read the caption, then approve it or tell us what to change.</p>
+      <p>Choose a day to see its planned posts, Stories and Reels. Review each item below.</p>
     </section>
     <nav class="format-tabs" aria-label="Content type">
+      <button type="button" data-view="calendar" aria-pressed="true">Calendar</button>
       <button type="button" data-format="Post" aria-pressed="true">Posts <span></span></button>
       <button type="button" data-format="Story" aria-pressed="false">Stories <span></span></button>
       <button type="button" data-format="Reel" aria-pressed="false">Reels <span></span></button>
     </nav>
+    <section id="calendar-panel" aria-label="Planned content calendar">
+      <div class="calendar-heading"><button type="button" data-month-step="-1" aria-label="Previous month">‹</button><h2 id="calendar-month"></h2><button type="button" data-month-step="1" aria-label="Next month">›</button></div>
+      <div class="weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div id="calendar-days" class="calendar-days"></div>
+      <button id="undated-content" type="button" class="secondary"></button>
+    </section>
+    <h2 id="day-heading" class="day-heading"></h2>
     <section class="review-bar" aria-label="Review controls">
       <label>Your name <input id="reviewer" name="reviewer" autocomplete="name" placeholder="Rich" maxlength="100"></label>
       <div class="filters" role="group" aria-label="Filter posts">
