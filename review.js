@@ -4,9 +4,9 @@
 // changes the displayed approval state or pretends the spreadsheet was updated.
 let posts = [];
 let reviews = new Map();
-let activeFilter = 'review';
+let selectedPostId = null;
 const formats = { Post: 'Posts', Story: 'Stories', Reel: 'Reels' };
-let activeFormat = Object.keys(formats).find(type => formats[type].toLowerCase() === new URLSearchParams(location.search).get('format')) || 'Post';
+let activeFormat = Object.keys(formats).find(type => formats[type].toLowerCase() === new URLSearchParams(location.search).get('format')) || 'all';
 let storageReady = false;
 let storageMode = 'unknown';
 const container = document.querySelector('#posts');
@@ -44,7 +44,6 @@ function makeCard(post) {
   const state = stateFor(post);
   const saved = reviews.get(post.id);
   card.dataset.postId = post.id;
-  card.querySelector('.draft-title').textContent = post.title;
   card.querySelector('.date').textContent = post.date ? new Date(post.date + ' 12:00:00').toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'}) : 'Date to choose';
   const badge = card.querySelector('.badge');
   badge.textContent = state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
@@ -118,27 +117,85 @@ function makeCard(post) {
   return card;
 }
 
+// Calendar dates are local noon to avoid shifting a day across time zones.
+function dateKey(date) {
+  return date.getFullYear() + '-' + String(date.getMonth()+1).padStart(2,'0') + '-' + String(date.getDate()).padStart(2,'0');
+}
+function postDay(post) { return post.date ? dateKey(new Date(post.date + ' 12:00:00')) : ''; }
+const events = [
+  {date:'2026-11-07',title:'Veterans Day parade'},
+  {date:'2026-11-19',title:'Art for Gifts begins',url:'https://www.saartcenter.org/exhibit-calendar'},
+  {date:'2026-11-26',title:'Thanksgiving'},
+  {date:'2026-11-28',title:'Small Business Saturday'},
+  {date:'2026-11-30',title:'Christmas parade · 7 p.m.',url:'https://www.stauntondowntown.org/downtown-staunton-christmas-parade-2026'},
+  {date:'2026-12-11',title:'A Sherlock Carol opens',url:'https://www.silverlinetheatre.org/shows'}
+];
+function openReview(post) {
+  selectedPostId = post.id;
+  container.replaceChildren(makeCard(post));
+  const dialog = document.querySelector('#review-dialog');
+  if (!dialog.open) dialog.showModal();
+}
+function makePreview(post) {
+  const button = document.createElement('button');
+  button.type = 'button'; button.className = 'mini-post ' + post.type.toLowerCase();
+  button.dataset.previewId = post.id;
+  button.setAttribute('aria-label', post.type + ': ' + post.title);
+  const type = document.createElement('span'); type.className = 'preview-type'; type.textContent = post.type;
+  const image = document.createElement('img'); image.src = post.image; image.alt = ''; image.loading = 'lazy';
+  const title = document.createElement('span'); title.className = 'preview-title'; title.textContent = post.title;
+  const state = stateFor(post);
+  const status = document.createElement('span'); status.className = 'preview-state ' + state;
+  status.textContent = state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
+  button.append(type,image,title,status);
+  button.addEventListener('click',()=>openReview(post));
+  return button;
+}
 function render() {
-  const formatPosts = posts.filter(post => post.type === activeFormat);
   for (const button of document.querySelectorAll('[data-format]')) {
     const type = button.dataset.format;
     button.setAttribute('aria-pressed', String(type === activeFormat));
-    button.querySelector('span').textContent = posts.filter(post => post.type === type).length;
+    const count = button.querySelector('span');
+    if (count) count.textContent = posts.filter(post => post.type === type).length;
   }
-  container.setAttribute('aria-label', formats[activeFormat] + ' for review');
-  const counts = {review:0, approved:0, changes:0};
-  for (const post of formatPosts) counts[stateFor(post)] += 1;
-  for (const key of Object.keys(counts)) document.querySelector('#' + key + '-count').textContent = counts[key];
-  const visible = formatPosts.filter(post => activeFilter === 'all' || stateFor(post) === activeFilter);
-  container.replaceChildren(...visible.map(makeCard));
-  document.querySelector('#empty').hidden = visible.length > 0;
-  document.querySelector('#empty').textContent = 'No drafts in this view.';
-  for (const button of document.querySelectorAll('[data-filter]')) button.setAttribute('aria-pressed', String(button.dataset.filter === activeFilter));
+  const visible = posts.filter(post => activeFormat === 'all' || post.type === activeFormat);
+  const weeks = [];
+  const start = new Date('2026-11-02T12:00:00');
+  const end = new Date('2026-12-13T12:00:00');
+  for (let monday = new Date(start); monday <= end; monday.setDate(monday.getDate()+7)) {
+    const section = document.createElement('section'); section.className = 'week';
+    const sunday = new Date(monday); sunday.setDate(sunday.getDate()+6);
+    const heading = document.createElement('h2');
+    heading.textContent = monday.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' – ' + sunday.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const scroll = document.createElement('div'); scroll.className = 'week-scroll'; scroll.tabIndex = 0;
+    scroll.setAttribute('aria-label','Week of ' + heading.textContent + ' — scroll sideways for more days');
+    const grid = document.createElement('div'); grid.className = 'week-grid';
+    for (let day=0; day<7; day++) {
+      const date = new Date(monday); date.setDate(date.getDate()+day);
+      const key = dateKey(date); const column = document.createElement('section'); column.className = 'week-day'; column.dataset.day = key;
+      const label = document.createElement('h3'); label.textContent = date.toLocaleDateString('en-US',{weekday:'short',day:'numeric'}); column.append(label);
+      for (const event of events.filter(event=>event.date===key)) {
+        const eventLabel = document.createElement(event.url ? 'a' : 'p');
+        eventLabel.className = 'event-label'; eventLabel.textContent = event.title;
+        if (event.url) {eventLabel.href=event.url;eventLabel.target='_blank';eventLabel.rel='noopener';}
+        column.append(eventLabel);
+      }
+      const items = visible.filter(post=>postDay(post)===key);
+      column.append(...items.map(makePreview));
+      if (!items.length) { const empty=document.createElement('p');empty.className='day-empty';empty.textContent='Open';column.append(empty); }
+      grid.append(column);
+    }
+    scroll.append(grid); section.append(heading,scroll); weeks.push(section);
+  }
+  document.querySelector('#weeks').replaceChildren(...weeks);
+  const undated=visible.filter(post=>!post.date);
+  document.querySelector('#undated-posts').replaceChildren(...undated.map(makePreview));
+  document.querySelector('#undated').hidden=!undated.length;
 }
 
 async function saveReview(post, card, action, note, caption) {
   const name = reviewer.value.trim();
-  if (!name) { reviewer.focus(); setMessage(card, 'Enter your name above the posts.', true); return; }
+  if (!name) { reviewer.focus(); setMessage(card, 'Enter your name above the preview.', true); return; }
   if (action === 'changes' && !note && caption === post.caption) { setMessage(card, 'Add a note or edit the caption first.', true); return; }
   if (!caption) { setMessage(card, 'The caption cannot be empty.', true); return; }
   // The request ID makes an uncertain/retried submission identifiable server-side.
@@ -152,10 +209,8 @@ async function saveReview(post, card, action, note, caption) {
     const value = await response.json();
     if (!response.ok || value.status !== 'success' || !value.review) throw new Error(value.message || 'The review was not saved.');
     reviews.set(post.id, value.review);
-    if (action === 'review') activeFilter = 'review';
     render();
-    const updated = [...container.querySelectorAll('[data-post-id]')].find(item => item.dataset.postId === post.id);
-    if (updated) updated.querySelector('details').open = true;
+    if (selectedPostId === post.id) container.replaceChildren(makeCard(post));
   } catch (error) {
     setMessage(card, error.message || 'Could not confirm this save. Reload before trying again.', true);
     buttons.forEach(button => { button.disabled = false; });
@@ -163,19 +218,19 @@ async function saveReview(post, card, action, note, caption) {
   }
 }
 
-for (const button of document.querySelectorAll('[data-filter]')) button.addEventListener('click', () => { activeFilter = button.dataset.filter; render(); });
 for (const button of document.querySelectorAll('[data-format]')) button.addEventListener('click', () => {
   activeFormat = button.dataset.format;
   render();
 });
+document.querySelector('#review-dialog .close').addEventListener('click', () => document.querySelector('#review-dialog').close());
 document.querySelector('#image-dialog .close').addEventListener('click', () => document.querySelector('#image-dialog').close());
 
 async function load() {
   try {
     const content = await fetch(document.documentElement.dataset.posts || '/api/posts', {cache:'no-store'});
-    if (!content.ok) throw new Error('Could not load the post ideas.');
+    if (!content.ok) throw new Error('Could not load the content plan.');
     posts = (await content.json()).posts;
-    if (!Array.isArray(posts)) throw new Error('The post ideas is unavailable.');
+    if (!Array.isArray(posts)) throw new Error('The content plan is unavailable.');
   } catch (error) {
     connection.textContent = error.message;
     connection.classList.add('error');
