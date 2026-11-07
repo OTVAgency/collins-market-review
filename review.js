@@ -5,6 +5,7 @@
 let posts = [];
 let reviews = new Map();
 let selectedPostId = null;
+let activeApproval = 'all';
 const formats = { Post: 'Posts', Story: 'Stories', Reel: 'Reels' };
 let activeFormat = Object.keys(formats).find(type => formats[type].toLowerCase() === new URLSearchParams(location.search).get('format')) || 'all';
 let storageReady = false;
@@ -28,6 +29,7 @@ function reviewHeaders(json = false) {
 }
 
 function stateFor(post) {
+  if (post.sheetStatus === 'Scheduled') return 'approved';
   const review = reviews.get(post.id);
   if (review && review.contentVersion === post.contentVersion) return review.action;
   return post.sheetStatus === 'Approved' ? 'approved' : post.sheetStatus === 'Rejected' ? 'changes' : 'review';
@@ -46,7 +48,7 @@ function makeCard(post) {
   card.dataset.postId = post.id;
   card.querySelector('.date').textContent = post.date ? new Date(post.date + ' 12:00:00').toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'}) : 'Date to choose';
   const badge = card.querySelector('.badge');
-  badge.textContent = state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
+  badge.textContent = post.sheetStatus === 'Scheduled' ? 'Scheduled' : state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
   badge.classList.add(state);
   const image = card.querySelector('.image-button img');
   image.src = post.image;
@@ -92,8 +94,11 @@ function makeCard(post) {
   card.querySelector('.concept').hidden = post.type !== 'Reel';
   const approve = card.querySelector('.approve');
   const canUndo = state === 'approved' && saved?.requestId;
-  approve.textContent = canUndo ? 'Undo approval' : post.type === 'Reel' ? 'Approve concept' : 'Approve post';
-  approve.disabled = !storageReady || post.sheetStatus === 'Rejected';
+  approve.textContent = post.sheetStatus === 'Scheduled' ? 'Scheduled' : canUndo ? 'Undo approval' : post.type === 'Reel' ? 'Approve concept' : 'Approve';
+  approve.disabled = !storageReady || ['Rejected','Scheduled'].includes(post.sheetStatus);
+  const reject = card.querySelector('.reject');
+  reject.disabled = !storageReady || post.sheetStatus === 'Scheduled';
+  reject.addEventListener('click', () => saveReview(post, card, 'changes', 'Not approved.', post.caption));
   const form = card.querySelector('.change-form');
   form.elements.caption.value = post.caption;
   card.querySelector('.request').disabled = !storageReady;
@@ -146,7 +151,7 @@ function makePreview(post) {
   const title = document.createElement('span'); title.className = 'preview-title'; title.textContent = post.title;
   const state = stateFor(post);
   const status = document.createElement('span'); status.className = 'preview-state ' + state;
-  status.textContent = state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
+  status.textContent = post.sheetStatus === 'Scheduled' ? 'Scheduled' : state === 'approved' ? 'Approved' : state === 'changes' ? 'Changes needed' : 'To review';
   button.append(type,image,title,status);
   button.addEventListener('click',()=>openReview(post));
   return button;
@@ -158,22 +163,23 @@ function render() {
     const count = button.querySelector('span');
     if (count) count.textContent = posts.filter(post => post.type === type).length;
   }
-  const visible = posts.filter(post => activeFormat === 'all' || post.type === activeFormat);
+  for (const button of document.querySelectorAll('[data-approval]')) button.setAttribute('aria-pressed', String(button.dataset.approval === activeApproval));
+  const visible = posts.filter(post => (activeFormat === 'all' || post.type === activeFormat) && (activeApproval === 'all' || (activeApproval === 'approved' ? stateFor(post) === 'approved' : stateFor(post) !== 'approved')));
   const weeks = [];
-  const start = new Date('2026-11-02T12:00:00');
-  const end = new Date('2026-12-13T12:00:00');
-  for (let monday = new Date(start); monday <= end; monday.setDate(monday.getDate()+7)) {
+  const start = new Date('2026-11-01T12:00:00');
+  const end = new Date('2026-12-12T12:00:00');
+  for (let weekStart = new Date(start); weekStart <= end; weekStart.setDate(weekStart.getDate()+7)) {
     const section = document.createElement('section'); section.className = 'week';
-    const sunday = new Date(monday); sunday.setDate(sunday.getDate()+6);
+    const weekEnd = new Date(weekStart); weekEnd.setDate(weekEnd.getDate()+6);
     const heading = document.createElement('h2');
-    heading.textContent = monday.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' – ' + sunday.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    heading.textContent = weekStart.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' – ' + weekEnd.toLocaleDateString('en-US',{month:'short',day:'numeric'});
     const scroll = document.createElement('div'); scroll.className = 'week-scroll'; scroll.tabIndex = 0;
     scroll.setAttribute('aria-label','Week of ' + heading.textContent + ' — scroll sideways for more days');
     const grid = document.createElement('div'); grid.className = 'week-grid';
     for (let day=0; day<7; day++) {
-      const date = new Date(monday); date.setDate(date.getDate()+day);
+      const date = new Date(weekStart); date.setDate(date.getDate()+day);
       const key = dateKey(date); const column = document.createElement('section'); column.className = 'week-day'; column.dataset.day = key;
-      const label = document.createElement('h3'); label.textContent = date.toLocaleDateString('en-US',{weekday:'short',day:'numeric'}); column.append(label);
+      const label = document.createElement('h3'); label.textContent = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][date.getDay()] + ' ' + date.getDate(); column.append(label);
       for (const event of events.filter(event=>event.date===key)) {
         const eventLabel = document.createElement(event.url ? 'a' : 'p');
         eventLabel.className = 'event-label'; eventLabel.textContent = event.title;
@@ -214,10 +220,12 @@ async function saveReview(post, card, action, note, caption) {
   } catch (error) {
     setMessage(card, error.message || 'Could not confirm this save. Reload before trying again.', true);
     buttons.forEach(button => { button.disabled = false; });
-    if (post.sheetStatus === 'Rejected') card.querySelector('.approve').disabled = true;
+    if (['Rejected','Scheduled'].includes(post.sheetStatus)) card.querySelector('.approve').disabled = true;
+    if (post.sheetStatus === 'Scheduled') card.querySelector('.reject').disabled = true;
   }
 }
 
+for (const button of document.querySelectorAll('[data-approval]')) button.addEventListener('click', () => { activeApproval = button.dataset.approval; render(); });
 for (const button of document.querySelectorAll('[data-format]')) button.addEventListener('click', () => {
   activeFormat = button.dataset.format;
   render();

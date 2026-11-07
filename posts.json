@@ -42,20 +42,20 @@
     {
       "id": "CM-NOV26-08",
       "row": 8,
-      "date": "11/7/2026",
+      "date": "11/8/2026",
       "title": "Your downtown stop",
       "type": "Post",
-      "caption": "A familiar stop on West Beverley. Swing by Collins Market for a snack, a cold drink, or a little something for your Saturday downtown.\n\n#CollinsMarket #DowntownStaunton #StauntonVA",
+      "caption": "A familiar stop on West Beverley. Swing by Collins Market for a snack, a cold drink, or a little something for your Sunday downtown.\n\n#CollinsMarket #DowntownStaunton #StauntonVA",
       "platform": "Facebook + Instagram",
       "sheetStatus": "Needs Review",
-      "note": "Graphic approved by Cory Nov 5. Sat Nov 7, 11 a.m. ET proposed; post review pending.",
+      "note": "Moved to Sunday Nov 8 at Cory\u2019s request. Graphic approved; caption and 11 a.m. ET timing remain proposed.",
       "approvalScope": "Draft artwork + caption + proposed date/time",
-      "reviewVersion": "NOV07-STOREFRONT-BRANDED-R3",
+      "reviewVersion": "NOV08-STOREFRONT-BRANDED-R4",
       "mediaUrl": "https://drive.google.com/file/d/1nb6oXJJKS-pHoZd9lolC995amamD8SBr/view?usp=drivesdk",
       "image": "./nov-8-storefront-branded-r3.png",
       "mediaSha256": "e1c870adb762206367e017a6f262a89c0fce80dd80b7eac183647bb957c3e25d",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A8:K8",
-      "contentVersion": "8e1f0f662c6e2c98c9ec0e6fbe4dbbc95a8b65fd8da4a5396e0b36534c2c89c6"
+      "contentVersion": "f3eea3169116a271f4bf4751106629910f87f1cbe4f9cdb2b4d70e784bcdfc86"
     },
     {
       "date": "11/7/2026",
@@ -78,15 +78,15 @@
     {
       "date": "11/7/2026",
       "platform": "Facebook + Instagram",
-      "sheetStatus": "Needs Review",
+      "sheetStatus": "Scheduled",
       "id": "CM-NOV26-PARADE-STORY-01",
       "row": 23,
       "title": "Honoring our veterans \u00b7 Parade video Story",
       "type": "Story",
       "caption": "Honoring our veterans. Staunton\u2019s Veterans Day Parade begins Saturday, November 7 at 11 a.m. and travels west along Beverley Street. Who will you be cheering for?",
-      "note": "15-second photo slideshow with soft downtown jazz. Review the Story and choose a pre-parade posting time.",
-      "approvalScope": "Finished 15-second video Story, soft jazz and proposed caption for Saturday November 7; posting time still to choose.",
-      "reviewVersion": "NOV07-VETERANS-PARADE-JAZZ-R1",
+      "note": "Scheduled on Facebook and Instagram for Saturday Nov 7 at 8:00 a.m. Eastern. Cory authorized this Story in chat; keep scheduled confirmed. Feedback here does not change Meta\u2019s schedule.",
+      "approvalScope": "Finished 15-second jazz video Story for Facebook and Instagram, November 7 at 8:00 a.m. America/New_York; Cory authorized release.",
+      "reviewVersion": "NOV07-VETERANS-PARADE-JAZZ-R1-SCHEDULED-0800",
       "mediaUrl": "https://drive.google.com/file/d/1HIrjN_qouxG1T5g6mzKYELguz4RwN_Lw/view",
       "image": "./nov-7-veterans-parade-story-r3.jpg",
       "videoSrc": "./nov-7-veterans-parade-jazz-r1.mp4",
@@ -94,7 +94,7 @@
       "posterSha256": "54f472f023bc5b7b6af8743dadce64e78390226959a50df37beed7051aac7a55",
       "durationSeconds": 15,
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A23:K23",
-      "contentVersion": "b9ba5c507b511f2d7a88562fc11ecc03bc0da5f320c472674701db4a7a37b6b3"
+      "contentVersion": "969d8424c024da277cf6126cf986e7800c99d71aeaee9a4aa14229cc113ead4e"
     },
     {
       "id": "CM-NOV26-09",
