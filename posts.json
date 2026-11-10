@@ -1,6 +1,6 @@
 {
   "month": "November 2026",
-  "sourceDate": "2026-11-06",
+  "sourceDate": "2026-11-09",
   "timezone": "America/New_York",
   "posts": [
     {
@@ -113,24 +113,6 @@
       "mediaSha256": "1aae7d9d16380785c124260d3cb5fed363b94d636a6fc3d87834cbe198743aa1",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A9:K9",
       "contentVersion": "f1bc4714e4dd22873b17804ab58d6bee014fad35e67bb30c57292ca3bd0e9824"
-    },
-    {
-      "id": "CM-NOV26-10",
-      "row": 10,
-      "date": "11/11/2026",
-      "title": "La Sunflower open house",
-      "type": "Story",
-      "caption": "A holiday stop for your downtown list: La Sunflower\u2019s Christmas Open House, November 12\u201314. Thursday and Friday, 11\u20137; Saturday, 10\u20135.",
-      "platform": "Facebook + Instagram",
-      "sheetStatus": "Needs Review",
-      "note": "Proposed 9 a.m. ET. Verify La Sunflower\u2019s listing; share/tag the host.",
-      "approvalScope": "This Week Downtown \u00b7 Wednesday Story. Review event details, Story artwork and caption.",
-      "reviewVersion": "NOV26-BRANDING-R5",
-      "mediaUrl": "https://drive.google.com/file/d/1Wy4jCLsCBf8Qxq7OKXmpLPzjhcoh1nrj/view?usp=drivesdk",
-      "image": "./nov-10-review-r5.png",
-      "mediaSha256": "db5fee942943b3bf104cec613e524bf84c0d6d076654e757be91e8616258d338",
-      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A10:K10",
-      "contentVersion": "809c66c5f6dbcb8491aee7257fa3831671ccb41c086a84dfe530b1bfd0917e97"
     },
     {
       "id": "CM-NOV26-11",
@@ -331,7 +313,43 @@
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A21:K21",
       "videoUrl": "https://www.facebook.com/reel/1705630467394772/",
       "contentVersion": "127495eed651e3951b12c6cd330451902e8025df55a0569532abe3b6bd3e39b7"
+    },
+    {
+      "date": "11/11/2026",
+      "row": 24,
+      "id": "CM-NOV26-VETERANS-DAY-POST-01",
+      "title": "Happy Veterans Day",
+      "type": "Post",
+      "caption": "Today we honor everyone who has served. Thank you to the veterans and military families in our Staunton community.\n\nA look back at Saturday\u2019s parade on Beverley Street.\n\n#VeteransDay #DowntownStaunton #CollinsMarket",
+      "note": "Rich\u2019s graphic from Saturday\u2019s parade. Feed post for review.",
+      "approvalScope": "Review the supplied artwork and Veterans Day caption for Wednesday.",
+      "reviewVersion": "NOV11-RICH-PARADE-R1",
+      "mediaUrl": "https://drive.google.com/file/d/1wLK_mCUf2NLppfXjNPRS4hxprU3Aew3o/view?usp=drivesdk",
+      "image": "./nov-11-veterans-day-rich.jpg",
+      "mediaSha256": "0cdc2235cefbb1a139f687b72bcce0021fc85dfa23e66cc95393e6b0e936a553",
+      "platform": "Facebook + Instagram",
+      "sheetStatus": "Needs Review",
+      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A24:K24",
+      "contentVersion": "e3f6dec5f19b4fe54697a148f555c693cce51875f026a3e3079afc0d3858f21b"
+    },
+    {
+      "date": "11/12/2026",
+      "row": 25,
+      "id": "CM-NOV26-DOWNTOWN-STROLL-STORY-01",
+      "title": "Make us a stop on your downtown stroll",
+      "type": "Story",
+      "caption": "Taking a walk downtown? Make Collins Market a stop along the way. Find us at 29 W Beverley St in Staunton.",
+      "note": "Proposed Thursday. Brand Story with the real storefront and Collins Market logo.",
+      "approvalScope": "Review the storefront artwork and Story copy for Thursday.",
+      "reviewVersion": "NOV12-DOWNTOWN-STROLL-STORY-R1",
+      "mediaUrl": "https://drive.google.com/file/d/1OFu0CDHwt-SZu-3ZBvyGKQYpLhMszprV/view?usp=drivesdk",
+      "image": "./nov-12-downtown-stroll-story.jpg",
+      "mediaSha256": "eb3dfb49a12b8e6b95e8dc3dfa72c9a48714dd11a662836486aeb08f8318f0b2",
+      "platform": "Facebook + Instagram",
+      "sheetStatus": "Needs Review",
+      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A25:K25",
+      "contentVersion": "a07b3d1d734b8a63908c5d90d66c1033a46c2484365662170a12e1715af8ddb9"
     }
   ],
-  "reviewPreparedFor": "November 7 parade review \u2014 prepared November 6, 2026"
+  "reviewPreparedFor": "November 8\u201314 weekly review"
 }
