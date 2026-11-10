@@ -300,22 +300,22 @@
     {
       "id": "CM-STORY-OPEN-01",
       "row": 21,
-      "date": "",
-      "title": "We\u2019re Open \u2014 reusable video Story",
+      "date": "11/12/2026",
+      "title": "We\u2019re Open \u2014 share Reel to Story",
       "type": "Story",
       "caption": "What brings you into Collins Market\u2014something cold to drink, a quick snack, or a browse? \ud83e\udd0e",
-      "platform": "Facebook + Instagram",
+      "platform": "Facebook",
       "sheetStatus": "Needs Review",
-      "note": "Reusable video Story. Choose date and confirm current opening hours.",
-      "approvalScope": "Existing video + proposed Story caption; date/time not selected",
-      "reviewVersion": "OPEN-STORY-FB1705630467394772-R1",
+      "note": "Share the existing Reel to Facebook Stories. The caption below is optional. Confirm Thursday hours before sharing.",
+      "approvalScope": "Review the November 12 Facebook Story reshare of the existing We\u2019re Open Reel.",
+      "reviewVersion": "NOV12-OPEN-STORY-RESHARE-R2",
       "mediaUrl": "https://www.facebook.com/reel/1705630467394772/",
       "image": "./we-are-open-story-preview.jpg",
       "durationSeconds": 10.006348,
       "mediaSha256": "4064ea0104ffe2bbc9ca1dde694b475e10c9bf24889344d1326a6871cc8cf6f3",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A21:K21",
       "videoUrl": "https://www.facebook.com/reel/1705630467394772/",
-      "contentVersion": "127495eed651e3951b12c6cd330451902e8025df55a0569532abe3b6bd3e39b7"
+      "contentVersion": "a87195f5044543670e56da50ff529bca448803462c7287499cebb1929550d16e"
     },
     {
       "date": "11/11/2026",
@@ -334,24 +334,6 @@
       "sheetStatus": "Needs Review",
       "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A24:K24",
       "contentVersion": "e3f6dec5f19b4fe54697a148f555c693cce51875f026a3e3079afc0d3858f21b"
-    },
-    {
-      "date": "11/12/2026",
-      "row": 25,
-      "id": "CM-NOV26-DOWNTOWN-STROLL-STORY-01",
-      "title": "Make us a stop on your downtown stroll",
-      "type": "Story",
-      "caption": "Taking a walk downtown? Make Collins Market a stop along the way. Find us at 29 W Beverley St in Staunton.",
-      "note": "Brand revision with a full-bleed storefront photo, cream script and the clocktower footer.",
-      "approvalScope": "Review the revised storefront artwork and Story copy for Thursday.",
-      "reviewVersion": "NOV12-DOWNTOWN-STROLL-STORY-R2",
-      "mediaUrl": "https://drive.google.com/file/d/1RWo2do7KMufZf-TORoyBa7XwpvYLCugD/view?usp=drivesdk",
-      "image": "./nov-12-downtown-stroll-story-r2.jpg",
-      "mediaSha256": "58d8ac8c90183955f9a9db775704a8518c5e2467b2f4ad3d407c7492d2a213d0",
-      "platform": "Facebook + Instagram",
-      "sheetStatus": "Needs Review",
-      "sheetUrl": "https://docs.google.com/spreadsheets/d/1o7AhzpmQdHCnj0H4Gpsx21ZK3VnHOSKVfSAK3mH0aXI/edit#gid=20261101&range=A25:K25",
-      "contentVersion": "d5a75e935750c2ad91f1b6c9ea34e1d57855032e2fdb00b4f885020b8db474b6"
     }
   ],
   "reviewPreparedFor": "November 8\u201314 weekly review"
